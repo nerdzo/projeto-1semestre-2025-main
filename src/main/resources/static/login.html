@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="w-100" style="max-width: 400px;">
+            <form id="formLogin">
+            <h2 class="text-center mb-4">Login</h2>
+            <div class="form-group mb-4">
+                <label for="username">Usuário</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" btn-block id="btnLogin">Entrar</button>
+            </form>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; 2025</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('formLogin').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:8080/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!response.ok) {
+                alert('Falha no login');
+                return;
+            }
+
+            const data = await response.json();
+            localStorage.setItem('jwt', data.token);
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
