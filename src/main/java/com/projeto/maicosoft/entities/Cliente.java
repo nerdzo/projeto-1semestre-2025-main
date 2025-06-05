@@ -7,64 +7,64 @@ import jakarta.persistence.*;
 public class Cliente {
 
     @Id
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String codigo;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String loja;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String razao;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String tipo;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String nomefantasia;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String finalidade;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100, unique = true)
     private String cnpj;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String cep;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String pais;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String estado;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String codmunicipio;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String cidade;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 100)
     private String endereco;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String bairro;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String ddd;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String telefone;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String abertura;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String contato;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String email;
 
-    @Column(nullable = true, length = 60)
+    @Column(nullable = true, length = 100)
     private String homepage;
 
     public Cliente(){

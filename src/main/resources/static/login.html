@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Login - MaicoSoft</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/login.css">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
+        
     </style>
 </head>
+
 <body>
     <div class="container mt-5 d-flex justify-content-center">
-        <div class="w-100" style="max-width: 400px;">
+        <div class="card p-4 shadow-sm">
             <form id="formLogin">
-            <h2 class="text-center mb-4">Login</h2>
-            <div class="form-group mb-4">
-                <label for="username">Usuário</label>
-                <input type="text" class="form-control" id="username" required>
-            </div>
-            <div class="form-group mb-4">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" required>
-            </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" btn-block id="btnLogin">Entrar</button>
+
+                <div class="form-header">
+                    <div class="title">
+                        <h2>Entrar</h2><br>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="username">Usuário</label>
+                    <div class="input-field">
+                        <input type="text" class="form-control" id="username" placeholder="Insira seu nome de usuário" required>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password">Senha</label>
+                    <div class="input-field">
+                        <input type="password" class="form-control" id="password" placeholder="Insira sua senha" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block" btn-block id="btnLogin">Entrar</button>
+
+                <p class="mt-5 mb-3 text-muted text-center">&copy; 2025</p>
+
             </form>
-            <p class="mt-5 mb-3 text-muted text-center">&copy; 2025</p>
         </div>
     </div>
 
@@ -45,7 +78,7 @@
             });
 
             if (!response.ok) {
-                alert('Falha no login');
+                alert('Nome de usuário ou senha incorretos!');
                 return;
             }
 
@@ -55,4 +88,5 @@
         });
     </script>
 </body>
+
 </html>

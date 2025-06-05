@@ -1,6 +1,5 @@
 package com.projeto.maicosoft.domain.cliente;
 import com.projeto.maicosoft.entities.Cliente;
-import com.projeto.maicosoft.exception.DuplicadoException;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +21,23 @@ public class ClienteService {
     }
 
     public Cliente criarCliente(Cliente cliente){
-        if (clienteRepository.existsById(cliente.getCodigo())) {
-            throw new DuplicadoException("Cliente com código '" + cliente.getCodigo() + "' já existe.");
+        if (clienteRepository.findByCnpj(cliente.getCnpj()).isPresent()) {
+        throw new IllegalArgumentException("CNPJ já cadastrado.");
+    }
+
+        String ultimoCodigo = clienteRepository.findUltimoCodigo();
+        String proximoCodigo;
+        if (ultimoCodigo == null) {
+            proximoCodigo = "C00001";
+        } else {
+            int numero = Integer.parseInt(ultimoCodigo.substring(1));
+            numero++;
+            proximoCodigo = String.format("C%05d", numero);
         }
+        cliente.setCodigo(proximoCodigo);
+
         Cliente clienteSalvo = clienteRepository.save(cliente);
-        String destinatario = "joao.laureanoo@fatec.sp.gov.br";
+        String destinatario = "fiscal1maicosoft@hotmail.com";
         String assunto = "Novo cliente cadastrado: " + clienteSalvo.getCodigo();
         String corpo = "O cliente " + clienteSalvo.getRazao() + " foi cadastrado com sucesso.\n"
         + "Código: " + clienteSalvo.getCodigo() + "\n"
@@ -36,6 +47,11 @@ public class ClienteService {
     }
 
     public boolean atualizarCliente(String codigo, Cliente clienteAtualizado){
+        Optional<Cliente> clienteExistente = clienteRepository.findByCnpj(clienteAtualizado.getCnpj());
+        if (clienteExistente.isPresent() && !clienteExistente.get().getCodigo().equals(codigo)) {
+            throw new IllegalArgumentException("CNPJ já cadastrado.");
+        }
+
         Optional<Cliente> clienteOptional = buscarClientePorCodigo(codigo);
         if(clienteOptional.isPresent()){
             Cliente cliente = clienteOptional.get();

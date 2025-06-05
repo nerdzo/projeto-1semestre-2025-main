@@ -30,7 +30,7 @@ public class Usuario {
     }
 
     public void setId(Long id){
-        this.senha = senha;
+        this.id = id;
     }
 
     public String getNome(){

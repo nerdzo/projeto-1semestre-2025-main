@@ -3,86 +3,77 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="manifest" href="/images/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
         <title>MaicoSoft</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/css/index.css">
 
         <style>
-            body {
-                background-color: #f8f9fa;
-            }
-
-            .table-responsive {
-                max-height: 500px;
-                overflow-y: auto;
-                overflow-x: auto;
-            }
-
-            table {
-                table-layout: auto;
-                font-size: 14px;
-                width: 100%;
-            }
-
-            table th, table td {
-                padding: 8px;
-                min-width: 200px;
-                vertical-align: middle;
-                text-align: left;
-            }
-
-                      
-            table th, table td:first-child {
-                width: 40px !important;
-                min-width: 40px !important;
-                max-width: 40px !important;
-                text-align: center;
-            }
-
+            
         </style>
+
         <script src="/js/token.js"></script>
     </head>
 
     <body>
         <header class="bg-white shadow-sm mb-4">
-            <div class="container-fluid d-flex align-items-center py-2" style="padding-left: 10;">
+            <div class="container-fluid d-flex align-items-center py-2 justify-content-between py-2" style="padding-left: 10;">
                 <a href="index.html" class="d-flex align-items-center">
                     <img src="/images/logo.png" alt="logo" style="height: 40px;">
                 </a>
+                <button id="desconectarBtn" class="btn btn-danger ms-auto">Desconectar</button>
             </div>
         </header>
-        <div class="container mt-5">
-            <h1>Gerenciamento de Clientes</h1>
-            <div class="card p-4 shadow-sm">
 
+        <div class="container mt-5">
+            <div class="card p-4 shadow-sm">
+                <div class="form-header">
+                    <h2>Gerenciamento de Clientes</h2>
+                </div>
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div class="form-group">
-                        <a href="incluir.html" class="btn btn-primary">Incluir</a>
+                        <a href="incluir.html" class="btn btn-success"><i class="fa-solid fa-plus"></i> Adicionar</a>
                     </div>
                     <div class="d-flex">
                         <div class="form-group col-auto">
-                            <button class="btn btn-outline-primary" id="visualizarSelecionado" disabled><img src="/images/visualizar.png" alt="buscar" style="height: 25px;"></button>
+                            <button class="btn btn-primary" id="visualizarSelecionado" disabled><i class="fa-solid fa-eye" style="color: #ffffff;"></i> Visualizar</button>
                         </div>
                         <div class="form-group col-auto">
-                            <button class="btn btn-outline-warning" id="alterarSelecionado" disabled><img src="/images/editar.png" alt="alterar" style="height: 25px;"></button>
+                            <button class="btn btn-warning text-white" id="alterarSelecionado" disabled><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> Editar</button>
                         </div>
                         <div class="form-group col-auto">
-                            <button class="btn btn-outline-danger" id="excluirSelecionado" disabled><img src="/images/lixeira.png" alt="excluir" style="height: 25px;"></button>
+                            <button class="btn btn-danger" id="excluirSelecionado" disabled><i class="fa-solid fa-trash" style="color: #ffffff;"></i> Excluir</button>
                         </div>
                     </div>
                 </div>
                 
-                
                 <div id="tabelaContainer">
 
-                    <div class="input-group mb-3" style="max-width: 100%;">
-                        <select class="custom-select" disabled style="max-width: 120px;">
-                            <option value="codigo" selected>Código</option>
-                        </select>
-                        <input type="text" id="filtroCodigo" class="form-control" placeholder="Digite o código..." maxlength="6" aria-label="Buscar por código">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" id="btnPesquisar">Pesquisar</button>
+                    <div class="search-group">
+                        <div class="search-icon">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #808080"></i>
                         </div>
+                        <input type="text" id="input-busca" class="search-field" placeholder="Pesquisar">
                     </div>
+                    
+                    <br>
 
                     <div class="table-responsive">
                         <table id="tabelaClientes" class="table table-bordered table-striped">
@@ -96,48 +87,31 @@
                                     <th>Nome Fantasia</th>
                                     <th>Finalidade</th>
                                     <th>CNPJ</th>
-                                    <th>CEP</th>                               
-                                    <th>País</th>
-                                    <th>Estado</th>
-                                    <th>Cód. Município</th>
-                                    <th>Cidade</th>
+                                    <th>Data de Abertura</th>
+                                    <th>CEP</th>
                                     <th>Endereço</th>
                                     <th>Bairro</th>
+                                    <th>Cidade</th>                          
+                                    <th>Estado</th>
+                                    <th>Cód. Município</th>
+                                    <th>País</th>
                                     <th>DDD</th>
                                     <th>Telefone</th>
-                                    <th>Abertura</th>
                                     <th>Contato</th>
-                                    <th>Email</th>
+                                    <th>E-mail</th>
                                     <th>Homepage</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="modelo-layout" style="visibility: collapse;">
-                                    <td></td>
-                                    <td>000000</td>
-                                    <td>00</td>
-                                    <td>Razão Social</td>
-                                    <td>Tipo</td>
-                                    <td>Nome Fantasia</td>
-                                    <td>Finalidade</td>
-                                    <td>00.000.000/0000-00</td>
-                                    <td>00000-000</td>
-                                    <td>Brasil</td>
-                                    <td>SP</td>
-                                    <td>1234567</td>
-                                    <td>Cidade</td>
-                                    <td>Endereço</td>
-                                    <td>Bairro</td>
-                                    <td>11</td>
-                                    <td>123456789</td>
-                                    <td>01/01/2020</td>
-                                    <td>Contato</td>
-                                    <td>email@exemplo.com</td>
-                                    <td>www.exemplo.com</td>
+                            <tbody id="tabela-clientes">
+                                <tr class="linha-modelo" style="visibility: collapse;">
+                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <p class="mensagem-vazia text-muted mt-3" style="display: none;">Nenhum resultado encontrado.</p>
 
                 </div>
 
@@ -146,9 +120,230 @@
             <form id="formCliente"></form>
         </div>
 
+        <div class="modal fade" id="confirmarExcluirModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esta operação não poderá ser desfeita após a confirmação da exclusão. Você tem certeza que deseja excluir este cliente?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="confirmarExcluirBtn">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalVisualizar" tabindex="-1" role="dialog" aria-labelledby="modalVisualizarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalVisualizarLabel">Clientes - VISUALIZAR</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <form id="formCliente1">
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="codigo">Código <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="codigo" maxlength="6" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label for="loja">Loja <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="loja" maxlength="2" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="razao">Razão Social <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="razao" maxlength="40" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="tipo">Tipo <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <select class="form-control" id="tipo" disabled>
+                                            <option value="">Selecione o tipo</option>
+                                            <option value="F">F - Consumidor Final</option>
+                                            <option value="L">L - Produtor Rural</option>
+                                            <option value="R">R - Revendedor</option>
+                                            <option value="S">S - Solidário</option>
+                                            <option value="X">X - Exportação</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="nomefantasia">Nome Fantasia <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="nomefantasia" maxlength="40" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="finalidade">Finalidade </label>
+                                    <div class="input-field">
+                                        <select class="form-control" id="finalidade" disabled>
+                                        <option value="">Selecione a finalidade</option>
+                                        <option value="F">F - Físico</option>
+                                        <option value="J">J - Jurídico</option>
+                                        <option value="X">X - Outros</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="cnpj">CNPJ</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="cnpj" maxlength="18" oninput="this.value = mascaraCNPJ(this.value)" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="abertura">Data de Abertura</label>
+                                    <div class="input-field">
+                                        <input type="date" class="form-control" id="abertura" maxlength="40" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="cep">CEP</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="cep" maxlength="9"
+                                            oninput="this.value = this.value = mascaraCEP(this.value)" onblur="pesquisacep(this.value);" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="endereco">Endereço <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="endereco" maxlength="60" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="bairro">Bairro</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="bairro" maxlength="50" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                            <div class="form-group col-md-5">
+                                    <label for="cidade">Município <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="cidade" maxlength="40" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="estado">Estado <span style="color: red;">*</span></label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" list="estados" id="estado" maxlength="2" oninput="this.value = this.value.toUpperCase();" autocomplete="off" disabled>
+                                        <datalist id="estados">
+                                            <option value="AC">
+                                            <option value="AL">
+                                            <option value="AM">
+                                            <option value="AP">
+                                            <option value="BA">
+                                            <option value="CE">
+                                            <option value="DF">
+                                            <option value="ES">
+                                            <option value="EX">
+                                            <option value="GO">
+                                            <option value="MA">
+                                            <option value="MG">
+                                            <option value="MS">
+                                            <option value="MT">
+                                            <option value="PA">
+                                            <option value="PB">
+                                            <option value="PE">
+                                            <option value="PI">
+                                            <option value="PR">
+                                            <option value="RJ">
+                                            <option value="RN">
+                                            <option value="RO">
+                                            <option value="RR">
+                                            <option value="RS">
+                                            <option value="SC">
+                                            <option value="SE">
+                                            <option value="SP">
+                                            <option value="TO">
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="codmunicipio">Cód. Município </label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="codmunicipio" maxlength="7" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="pais">País</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="pais" maxlength="3" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-1">
+                                    <label for="ddd">DDD</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="ddd" maxlength="3" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="telefone">Telefone</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="telefone" maxlength="9" oninput="this.value = mascaraTelefone(this.value)" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label for="contato">Contato</label>
+                                    <div class="input-field">
+                                        <input type="text" class="form-control" id="contato" maxlength="60" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="email">E-mail</label>
+                                    <div class="input-field">
+                                        <input type="email" class="form-control" id="email" maxlength="50" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="homepage">Homepage</label>
+                                    <div class="input-field">
+                                        <input type="url" class="form-control" id="homepage" maxlength="60" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/js/clientes.js"></script>
+        <script src="/js/eventos.js"></script>
     </body>
 </html>

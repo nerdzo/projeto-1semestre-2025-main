@@ -3,12 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Alterar - MaicoSoft</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="manifest" href="/images/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <title>Alterar cliente - MaicoSoft</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/alterar.css">
         <style>
-            body {
-                background-color: #f8f9fa;
-            }
 
         </style>
         <script src="/js/token.js"></script>
@@ -17,158 +32,213 @@
 
     <body>
         <header class="bg-white shadow-sm mb-4">
-            <div class="container-fluid d-flex align-items-center py-2" style="padding-left: 10;">
+            <div class="container-fluid d-flex align-items-center py-2 justify-content-between py-2" style="padding-left: 10;">
                 <a href="index.html" class="d-flex align-items-center">
                     <img src="/images/logo.png" alt="logo" style="height: 40px;">
                 </a>
+                <button id="desconectarBtn" class="btn btn-danger ms-auto">Desconectar</button>
             </div>
         </header>
 
         <br>
-        <div class="container mt-5">
+        <div class="container">
             <div class="card p-4 shadow-sm">
-                <form id="formCliente1">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h3>Clientes - ALTERAR</h3>
-                    </div>
-                    <div class="d-flex">
-                        <div class="form-group col-auto">
-                            <a href="index.html" class="btn btn-danger">Fechar</a>
+                <form id="formCliente">
+                    <div class="form-header">
+                        <div class="title">
+                            <h2>Clientes - ALTERAR</h2>
                         </div>
-                        <div class="form-group col-auto">
-                            <button type="submit" class="btn btn-success">Alterar</button>
+                        <div class="d-flex">
+                            <div class="form-group col-auto">
+                                <button type="button" id="btnFechar" class="btn btn-danger">Fechar</button>
+                            </div>
+                            <div class="form-group col-auto">
+                                <button type="submit" class="btn btn-success">Alterar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="clientes" class="list-group mb-3"></div>
-
-                    <div class="form-row">
+                    <div class="row">
                         <div class="form-group col-md-2">
-                            <label for="codigo">Codigo <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="codigo" maxlength="6" autocomplete="off" disabled>
+                            <label for="codigo">Código <span style="color: red;">*</span></label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="codigo" maxlength="6" autocomplete="off" disabled>
+                            </div>
                         </div>
                         <div class="form-group col-md-1">
                             <label for="loja">Loja <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="loja" maxlength="2" autocomplete="off" disabled>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="loja" maxlength="2" autocomplete="off" disabled>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="razao">Razão <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="razao" maxlength="40" autocomplete="off" required>
+                        <div class="form-group col-md-5">
+                            <label for="razao">Razão Social <span style="color: red;">*</span></label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="razao" maxlength="60" autocomplete="off" required>
+                            </div>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="tipo">Tipo <span style="color: red;">*</span></label>
-                            <select class="form-control" id="tipo" required>
-                                <option value="">Selecione o tipo</option>
-                                <option value="F">F - Físico</option>
-                                <option value="J">J - Jurídico</option>
-                                <option value="X">X - Outros</option>
-                            </select>
+                            <div class="input-field">
+                                <select class="form-control" id="tipo" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="F">F - Consumidor Final</option>
+                                    <option value="L">L - Produtor Rural</option>
+                                    <option value="R">R - Revendedor</option>
+                                    <option value="S">S - Solidário</option>
+                                    <option value="X">X - Exportação</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
                             <label for="nomefantasia">Nome Fantasia <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="nomefantasia" maxlength="40" autocomplete="off" required>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="finalidade">Finalidade <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="finalidade" maxlength="40" autocomplete="off" required>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="nomefantasia" maxlength="40" autocomplete="off" required>
+                            </div>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="cnpj">CNPJ</label>
-                            <input type="text" class="form-control" id="cnpj" maxlength="14" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off">
+                            <label for="finalidade">Finalidade </label>
+                            <div class="input-field">
+                                <select class="form-control" id="finalidade">
+                                    <option value="">Selecione a finalidade</option>
+                                    <option value="F">F - Físico</option>
+                                    <option value="J">J - Jurídico</option>
+                                    <option value="X">X - Outros</option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label for="cnpj">CNPJ</label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="cnpj" maxlength="18" onblur="checkCnpj(this.value)" oninput="this.value = mascaraCNPJ(this.value); adicionarPatternCNPJ(this)" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="abertura">Data de Abertura</label>
+                            <div class="input-field">
+                                <input type="date" class="form-control" id="abertura" maxlength="40">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="form-group col-md-2">
                             <label for="cep">CEP</label>
-                            <input type="text" class="form-control" id="cep" maxlength="8" oninput="this.value = this.value.replace(/\D/g, '')" onblur="pesquisacep(this.value);" autocomplete="off">
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="cep" maxlength="9"
+                                    oninput="this.value = this.value = mascaraCEP(this.value); adicionarPatternCEP(this)" onblur="pesquisacep(this.value);" autocomplete="off">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row"> 
-                        <div class="form-group col-md-1">
-                            <label for="pais">Pais</label>
-                            <input type="text" class="form-control" id="pais" maxlength="3" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="estado">Estado <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" list="estados" id="estado" maxlength="2" oninput="this.value = this.value.toUpperCase();" autocomplete="off" required>
-                            <datalist id="estados">
-                                <option value="AC">
-                                <option value="AL">
-                                <option value="AM">
-                                <option value="AP">
-                                <option value="BA">
-                                <option value="CE">
-                                <option value="DF">
-                                <option value="ES">
-                                <option value="EX">
-                                <option value="GO">
-                                <option value="MA">
-                                <option value="MG">
-                                <option value="MS">
-                                <option value="MT">
-                                <option value="PA">
-                                <option value="PB">
-                                <option value="PE">
-                                <option value="PI">
-                                <option value="PR">
-                                <option value="RJ">
-                                <option value="RN">
-                                <option value="RO">
-                                <option value="RR">
-                                <option value="RS">
-                                <option value="SC">
-                                <option value="SE">
-                                <option value="SP">
-                                <option value="TO">
-                            </datalist>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="codmunicipio">Cod Municipio</label>
-                            <input type="text" class="form-control" id="codmunicipio" maxlength="7" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="cidade">Cidade <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="cidade" maxlength="40" autocomplete="off" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-5">
-                            <label for="endereco">Endereco <span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" id="endereco" maxlength="40" autocomplete="off" required>
+                            <label for="endereco">Endereço <span style="color: red;">*</span></label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="endereco" maxlength="60" autocomplete="off" required>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="bairro">Bairro</label>
-                            <input type="text" class="form-control" id="bairro" maxlength="40" autocomplete="off">
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="bairro" maxlength="50" autocomplete="off">
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="form-group col-md-5">
+                            <label for="cidade">Município <span style="color: red;">*</span></label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="cidade" maxlength="40" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="estado">Estado <span style="color: red;">*</span></label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" list="estados" id="estado" maxlength="2" oninput="this.value = this.value.toUpperCase();" autocomplete="off" required>
+                                <datalist id="estados">
+                                    <option value="AC">
+                                    <option value="AL">
+                                    <option value="AM">
+                                    <option value="AP">
+                                    <option value="BA">
+                                    <option value="CE">
+                                    <option value="DF">
+                                    <option value="ES">
+                                    <option value="EX">
+                                    <option value="GO">
+                                    <option value="MA">
+                                    <option value="MG">
+                                    <option value="MS">
+                                    <option value="MT">
+                                    <option value="PA">
+                                    <option value="PB">
+                                    <option value="PE">
+                                    <option value="PI">
+                                    <option value="PR">
+                                    <option value="RJ">
+                                    <option value="RN">
+                                    <option value="RO">
+                                    <option value="RR">
+                                    <option value="RS">
+                                    <option value="SC">
+                                    <option value="SE">
+                                    <option value="SP">
+                                    <option value="TO">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="codmunicipio">Cód. Município </label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="codmunicipio" maxlength="7" oninput="this.value = this.value.replace(/\D/g, ''); adicionarPatternCodMunicipio(this)" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="pais">País</label>
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="pais" maxlength="3" oninput="this.value = this.value.replace(/\D/g, ''); adicionarPatternPais(this)" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="form-group col-md-1">
                             <label for="ddd">DDD</label>
-                            <input type="text" class="form-control" id="ddd" maxlength="3" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off">
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="ddd" maxlength="3" oninput="this.value = this.value.replace(/\D/g, ''); adicionarPatternDDD(this)" autocomplete="off">
+                            </div>
                         </div>
-                            <div class="form-group col-md-2">
+                        <div class="form-group col-md-2">
                             <label for="telefone">Telefone</label>
-                            <input type="text" class="form-control" id="telefone" maxlength="8" oninput="this.value = this.value.replace(/\D/g, '')" autocomplete="off">
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="telefone" maxlength="9" oninput="this.value = mascaraTelefone(this.value); adicionarPatternTelefone(this)" autocomplete="off">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label for="abertura">Abertura</label>
-                            <input type="date" class="form-control" id="abertura" maxlength="40">
-                        </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-8">
                             <label for="contato">Contato</label>
-                            <input type="text" class="form-control" id="contato" maxlength="40" autocomplete="off">
-                        </div>
-                            <div class="form-group col-md-4">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" maxlength="40" autocomplete="off">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="homepage">Homepage</label>
-                            <input type="url" class="form-control" id="homepage" maxlength="40" autocomplete="off">
+                            <div class="input-field">
+                                <input type="text" class="form-control" id="contato" maxlength="60" autocomplete="off">
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="email">E-mail</label>
+                            <div class="input-field">
+                                <input type="email" class="form-control" id="email" maxlength="50" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="homepage">Homepage</label>
+                            <div class="input-field">
+                                <input type="url" class="form-control" id="homepage" maxlength="60" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -177,7 +247,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Salvar</h5>
+                <h5 class="modal-title">Alterar</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -186,16 +256,63 @@
                 <p>Você tem certeza que deseja alterar este cliente?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="confirmarAlterarBtn">Confirmar</button>
             </div>
             </div>
         </div>
         </div>
         
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <div class="modal" id="confirmarFecharModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Há alterações não salvas no formulário!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Você pode perder as alterações. O que deseja fazer?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarFecharBtn">Sair da página</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function checkCnpj(cnpj){
+                $.ajax({
+                    'url': 'https://www.receitaws.com.br/v1/cnpj/' + cnpj.replace(/[^0-9]/g, ''),
+                    'type': "GET",
+                    'dataType': 'jsonp',
+                    'success': function(data){
+                        if(data.nome == undefined){
+                            alert(data.status + ' ' + data.message)
+                        }else{
+                            document.getElementById('razao').value = data.nome;
+                            document.getElementById('nomefantasia').value = data.fantasia;
+                            document.getElementById('cidade').value = data.municipio;
+                            document.getElementById('bairro').value = data.bairro;
+                            document.getElementById('endereco').value = data.logradouro;
+                            document.getElementById('estado').value = data.uf;
+                            document.getElementById('email').value = data.email;
+                        }
+                    }
+                })
+            }
+            </script>
+
+        <script src="/js/mascara.js">
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/js/alterar.js"></script>
+        <script src="/js/fechar.js"></script>
     </body>
 </html>
